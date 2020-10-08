@@ -6,7 +6,7 @@ import HelloWorld from "./HelloWorld";
 import HogContainer from "./HogContainer"
 
 class App extends Component {
-  state ={
+  state = {
     hogs: hogs
   }
 
