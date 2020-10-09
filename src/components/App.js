@@ -7,8 +7,8 @@ import HogContainer from "./HogContainer";
 
 class App extends Component {
   state = {
-    hogs: hogs,
-    selectedCategory: "All",
+    piggies: hogs,
+    selectedCategory: "",
   };
 
   changeSelectedCategory = (pickedCat) => {
@@ -17,27 +17,34 @@ class App extends Component {
     });
   };
 
+
   helperFunctionThatReturnsAnArray = () => {
-    if (this.state.selectedCategory === "All") {
-      return this.state.hogs;
-    } else if (this.state.selectedCategory === "Greasy") {
-      return this.state.hogs.filter((pig) => pig.greased);
-    } else if (this.state.selectedCategory === "Clean") {
-      return this.state.hogs.filter((pig) => !pig.greased);
-    } else if (this.state.selectedCategory === "Name") {
-      let copyOfArray = [...this.state.hogs];
+    if(this.state.selectedCategory === "All"){
+      return this.state.piggies
+
+    } else if(this.state.selectedCategory === "Greasy"){
+      return this.state.piggies.filter(pig => pig.greased)
+
+    } else if(this.state.selectedCategory === "Clean"){
+      return this.state.piggies.filter(pig => !pig.greased)
+
+    } else if(this.state.selectedCategory === "Name"){
+      let copyOfArray = [...this.state.piggies]
       copyOfArray.sort((pigA, pigB) => {
-        return pigA.name.localeCompare(pigB.name);
-      });
-      return copyOfArray;
-    } else if (this.state.selectedCategory === "Weight") {
-      let copyOfArray = [...this.state.hogs];
+        return pigA.name.localeCompare(pigB.name)
+      })
+      return copyOfArray
+      
+    } else if(this.state.selectedCategory === "Weight"){
+      let copyOfArray = [...this.state.piggies]
       copyOfArray.sort((pigA, pigB) => {
-        return pigA.weight - pigB.weight;
-      });
-      return copyOfArray;
+        return pigA.weight - pigB.weight
+      })
+      return copyOfArray
+    }else{
+      return (this.state.piggies)
     }
-  };
+  }
 
   render() {
     return (
@@ -47,7 +54,7 @@ class App extends Component {
           selectedCategory={this.state.selectedCategory}
           changeSelectedCategory={this.changeSelectedCategory}
         />
-        <HogContainer hogs={this.helperFunctionThatReturnsAnArray()} />
+        <HogContainer piggies={this.helperFunctionThatReturnsAnArray()} />
       </div>
     );
   }

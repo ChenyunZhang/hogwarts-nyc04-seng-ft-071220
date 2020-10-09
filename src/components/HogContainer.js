@@ -7,7 +7,7 @@ class HogContainer extends React.Component{
     
     render(){
 
-        let hogsArr = this.props.hogs.map(hogObj => {
+        let hogsArr = this.props.piggies.map(hogObj => {
             return (
             <Hog 
             key = {hogObj.name}
