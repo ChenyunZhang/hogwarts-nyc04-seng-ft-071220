@@ -2,30 +2,52 @@ import React, { Component } from "react";
 import "../App.css";
 import Nav from "./Nav";
 import hogs from "../porkers_data";
-import HelloWorld from "./HelloWorld";
+import Search from "./Search";
 import HogContainer from "./HogContainer";
 
 class App extends Component {
   state = {
     hogs: hogs,
+    selectedCategory: "All",
   };
 
-  filterGrease = () => {
-    let filteredArray = hogs.filter((hog) => hog.greased === true)
+  changeSelectedCategory = (pickedCat) => {
     this.setState({
-      hogs: filteredArray
-    })
+      selectedCategory: pickedCat
+    });
+  };
+
+  helperFunctionThatReturnsAnArray = () => {
+    if (this.state.selectedCategory === "All") {
+      return this.state.hogs;
+    } else if (this.state.selectedCategory === "Greasy") {
+      return this.state.hogs.filter((pig) => pig.greased);
+    } else if (this.state.selectedCategory === "Clean") {
+      return this.state.hogs.filter((pig) => !pig.greased);
+    } else if (this.state.selectedCategory === "Name") {
+      let copyOfArray = [...this.state.hogs];
+      copyOfArray.sort((pigA, pigB) => {
+        return pigA.name.localeCompare(pigB.name);
+      });
+      return copyOfArray;
+    } else if (this.state.selectedCategory === "Weight") {
+      let copyOfArray = [...this.state.hogs];
+      copyOfArray.sort((pigA, pigB) => {
+        return pigA.weight - pigB.weight;
+      });
+      return copyOfArray;
+    }
   };
 
   render() {
     return (
       <div className="App">
         <Nav />
-        <HelloWorld
-          hogs={this.state.hogs}
-          greased={this.filterGrease}
+        <Search
+          selectedCategory={this.state.selectedCategory}
+          changeSelectedCategory={this.changeSelectedCategory}
         />
-        <HogContainer hogs={this.state.hogs} />
+        <HogContainer hogs={this.helperFunctionThatReturnsAnArray()} />
       </div>
     );
   }

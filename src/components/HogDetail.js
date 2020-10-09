@@ -1,19 +1,20 @@
 import React from "react";
 
 class HogDetail extends React.Component {
-    render(){
+  render() {
+       let {specialty, greased, weight} = this.props.hogObj.hog
 
-        return(
-            
-            <div>
-                <li>Specialty: {this.props.hogObj.hog.specialty}</li>
-                <li>Greased: {String(this.props.hogObj.hog.greased)}</li>
-                <li>Weight: {String(this.props.hogObj.hog.weight)}</li>
-                <li>Highest medal achieved: {this.props.hogObj.hog['highest medal achieved']}</li>
-            </div>
-        
-        )
-    }
+    return (
+      <div>
+        <li>Specialty: {specialty}</li>
+        <li>Greased: {String(greased)}</li>
+        <li>Weight: {weight} Tons</li>
+        <li>
+          Medal:{this.props.hogObj.hog["highest medal achieved"]}
+        </li>
+      </div>
+    );
+  }
 }
 
 export default HogDetail;

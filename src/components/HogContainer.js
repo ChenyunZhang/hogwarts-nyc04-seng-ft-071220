@@ -4,19 +4,22 @@ import Hog from './Hog'
 
 class HogContainer extends React.Component{
 
-    hogsArr = this.props.hogs.map(hogObj => {
-        return (
-        <Hog 
-        key = {hogObj.name}
-        hog = {hogObj}
-        />
-        )
-    } )
-
+    
     render(){
+
+        let hogsArr = this.props.hogs.map(hogObj => {
+            return (
+            <Hog 
+            key = {hogObj.name}
+            hog = {hogObj}
+            />
+            )
+        } )
+
         return(
+            
             <div className={"Outer-Container"}>
-                {this.hogsArr}
+                {hogsArr}
             </div>
         )
     }
