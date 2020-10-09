@@ -1,10 +1,20 @@
 import React, { Fragment } from "react";
 
 class HelloWorld extends React.Component {
+
+
+  handleTrueClick = () =>{
+    this.props.filterGrease()
+  }
+  // handleFalseClick = () =>{
+    
+  // }
+
   render() {
     return (
       <div>
-        <h1>Hello Hogs</h1>
+        <button onClick={this.handleTrueClick} >greased: true</button>
+        {/* <button onClick={this.handleFalseClick}>greased: false</button> */}
       </div>
     );
   }

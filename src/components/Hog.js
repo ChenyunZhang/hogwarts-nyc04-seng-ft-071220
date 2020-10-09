@@ -17,14 +17,12 @@ class Hog extends React.Component {
     })
   }
   render() {
-    
-
     return (
       <div className="container">
         <h4>{this.props.hog.name}</h4>
+        <div><button className="delButton">x</button></div>
         <img src={augustus_gloop} alt="hogsImage" />
-        <button className="delButton">x</button>
-        <button onClick={this.handleClick}> Details</button>
+        <div><button onClick={this.handleClick}> Details</button></div>
         {this.state.display ? <HogDetail hogObj={this.props}/> : null}
       </div>
     );
