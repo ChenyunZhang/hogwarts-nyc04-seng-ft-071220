@@ -10,7 +10,7 @@ class HogDetail extends React.Component {
         <li>Greased: {String(greased)}</li>
         <li>Weight: {weight} Tons</li>
         <li>
-          Medal:{this.props.hogObj.hog["highest medal achieved"]}
+          Medal: {this.props.hogObj.hog.highest_medal_achieved}
         </li>
       </div>
     );

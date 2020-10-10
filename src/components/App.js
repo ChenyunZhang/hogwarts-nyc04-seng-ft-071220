@@ -1,15 +1,29 @@
 import React, { Component } from "react";
 import "../App.css";
 import Nav from "./Nav";
-import hogs from "../porkers_data";
+// import hogs from "../porkers_data";
 import Search from "./Search";
 import HogContainer from "./HogContainer";
 
+
 class App extends Component {
   state = {
-    piggies: hogs,
+    piggies: [],
     selectedCategory: "",
   };
+
+
+  componentDidMount(){
+    fetch("http://localhost:3000/pigs")
+      .then(res => res.json())
+      .then((arrayOfPigs) => {
+        this.setState({
+          piggies: arrayOfPigs
+        })
+      })
+
+  }
+
 
   changeSelectedCategory = (pickedCat) => {
     this.setState({

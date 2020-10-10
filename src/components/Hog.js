@@ -13,8 +13,8 @@ class Hog extends React.Component {
     });
   };
   render() {
-    let imageName = this.props.hog.name.toLowerCase().replace(/ /g, "_");
-    let hogImage = require(`../hog-imgs/${imageName}.jpg`)
+    // let imageName = this.props.hog.name.toLowerCase().replace(/ /g, "_");
+    // let hogImage = require(`../hog-imgs/${imageName}.jpg`)
 
     return (
       <div className="container">
@@ -22,7 +22,7 @@ class Hog extends React.Component {
         <div>
           <button className="delButton">x</button>
         </div>
-        <img src={hogImage} alt={imageName} />
+        <img src={this.props.hog.img_url} alt={this.props.hog.name} />
         <div>
           <button onClick={this.handleClick}> Details</button>
         </div>
